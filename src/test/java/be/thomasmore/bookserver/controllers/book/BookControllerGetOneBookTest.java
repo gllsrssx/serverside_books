@@ -1,4 +1,4 @@
-package be.thomasmore.bookserver.controllers;
+package be.thomasmore.bookserver.controllers.book;
 
 import be.thomasmore.bookserver.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -11,27 +11,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SuppressWarnings("SpringTestingSqlInspection")
-@Sql("/sql/authors/create_2_authors.sql")
-@Sql(scripts = "/sql/authors/clean_authors.sql", executionPhase = AFTER_TEST_METHOD)
-public class AutorControllerGetOneAuthorTest extends AbstractIntegrationTest {
+@Sql("/sql/books/create_2_books.sql")
+@Sql(scripts = "/sql/books/clean_books.sql", executionPhase = AFTER_TEST_METHOD)
+public class BookControllerGetOneBookTest extends AbstractIntegrationTest {
 
     @Test
-    public void getOneAuthor() throws Exception {
-        mockMvc.perform(getMockRequestGet("/api/authors/1"))
+    public void getOneBook() throws Exception {
+        mockMvc.perform(getMockRequestGet("/api/books/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.name").value("Thomas Mann"))
-                .andExpect(jsonPath("$.books").exists())
-                .andExpect(jsonPath("$.books").isEmpty());
+                .andExpect(jsonPath("$.title").value("Test Automation"))
+                .andExpect(jsonPath("$.authors").exists())
+                .andExpect(jsonPath("$.authors").isEmpty());
     }
 
     @Test
-    public void getOneAuthorNotFound() throws Exception {
+    public void getOneBookNotFound() throws Exception {
         final MvcResult mvcResult =
-                mockMvc.perform(getMockRequestGet("/api/authors/9999"))
+                mockMvc.perform(getMockRequestGet("/api/books/9999"))
                         .andExpect(status().isInternalServerError()) // strange!!! I expected isNotFound().....??????
                         .andReturn();
-        assertThat(mvcResult.getResponse().getErrorMessage()).isEqualTo("Author with id 9999 does not exist.");
+        assertThat(mvcResult.getResponse().getErrorMessage()).isEqualTo("Book with id 9999 does not exist.");
 
     }
 
