@@ -16,7 +16,7 @@ public class SerieControllerGetOneSerieTest extends AbstractIntegrationTest {
 
     @Test
     public void getOneSerie() throws Exception {
-        mockMvc.perform(getMockRequestGetBooks("/api/series/1"))
+        mockMvc.perform(getMockRequestGet("/api/series/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Programming in C"));
@@ -25,7 +25,7 @@ public class SerieControllerGetOneSerieTest extends AbstractIntegrationTest {
     @Test
     public void getOneSerieNotFound() throws Exception {
         final MvcResult mvcResult =
-                mockMvc.perform(getMockRequestGetBooks("/api/series/9999"))
+                mockMvc.perform(getMockRequestGet("/api/series/9999"))
                         .andExpect(status().isInternalServerError())
                         .andReturn();
         assertThat(mvcResult.getResponse().getErrorMessage()).isEqualTo("Serie with id 9999 does not exist.");

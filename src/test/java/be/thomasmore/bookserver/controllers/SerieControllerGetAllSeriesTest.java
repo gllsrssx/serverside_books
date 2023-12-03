@@ -16,7 +16,7 @@ public class SerieControllerGetAllSeriesTest extends AbstractIntegrationTest {
 
     @Test
     public void getAllSeries() throws Exception {
-        mockMvc.perform(getMockRequestGetBooks("/api/series"))
+        mockMvc.perform(getMockRequestGet("/api/series"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id").value(1))

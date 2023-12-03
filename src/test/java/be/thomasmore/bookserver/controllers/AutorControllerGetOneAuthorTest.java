@@ -17,7 +17,7 @@ public class AutorControllerGetOneAuthorTest extends AbstractIntegrationTest {
 
     @Test
     public void getOneAuthor() throws Exception {
-        mockMvc.perform(getMockRequestGetBooks("/api/authors/1"))
+        mockMvc.perform(getMockRequestGet("/api/authors/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Thomas Mann"))
@@ -28,7 +28,7 @@ public class AutorControllerGetOneAuthorTest extends AbstractIntegrationTest {
     @Test
     public void getOneAuthorNotFound() throws Exception {
         final MvcResult mvcResult =
-                mockMvc.perform(getMockRequestGetBooks("/api/authors/9999"))
+                mockMvc.perform(getMockRequestGet("/api/authors/9999"))
                         .andExpect(status().isInternalServerError()) // strange!!! I expected isNotFound().....??????
                         .andReturn();
         assertThat(mvcResult.getResponse().getErrorMessage()).isEqualTo("Author with id 9999 does not exist.");

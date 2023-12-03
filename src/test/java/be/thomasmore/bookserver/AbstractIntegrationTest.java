@@ -29,7 +29,7 @@ public abstract class AbstractIntegrationTest {
     @Autowired
     protected MockMvc mockMvc;
 
-    protected MockHttpServletRequestBuilder getMockRequestGetBooks(String url) {
+    protected MockHttpServletRequestBuilder getMockRequestGet(String url) {
         return MockMvcRequestBuilders
                 .get(url)
                 .contentType(MediaType.APPLICATION_JSON);

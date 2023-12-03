@@ -16,7 +16,7 @@ public class AuthorControllerGetAllAuthorsTest extends AbstractIntegrationTest {
 
     @Test
     public void getAllAuthors() throws Exception {
-        mockMvc.perform(getMockRequestGetBooks("/api/authors"))
+        mockMvc.perform(getMockRequestGet("/api/authors"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id").value(1))
