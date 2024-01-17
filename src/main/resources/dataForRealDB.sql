@@ -18,12 +18,12 @@ insert into book (title) values ('Extreme Programming Explained'); /*17*/
 insert into book (title) values ('Implementation patterns'); /*18*/
 insert into book (title) values ('Clean code'); /*19*/
 
-insert into author (name) values ('Margaret Atwood'); /*1*/
-insert into author (name) values ('Haruki Murakami'); /*2*/
-insert into author (name) values ('Erich Gamma'); /*3*/
-insert into author (name) values ('Richard Helm'); /*4*/
-insert into author (name) values ('Ralph Johnson'); /*5*/
-insert into author (name) values ('John Vlissides'); /*6*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('Margaret Atwood', 'Margaret Atwood was born in 1939 in Ottawa and grew up in northern Ontario, Quebec, and Toronto. Throughout her writing career, Margaret Atwood has received numerous awards and honourary degrees.'); /*1*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('Haruki Murakami', 'Haruki Murakami  is a popular contemporary Japanese writer and translator. His work has been described as ''easily accessible, yet profoundly complex''.'); /*2*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('Erich Gamma', 'One of the ''Gang of four''.'); /*3*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('Richard Helm', 'One of the  ''Gang of four''.'); /*4*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('Ralph Johnson', 'One of the  ''Gang of four''.'); /*5*/
+insert into AUTHOR (NAME, DESCRIPTION) values ('John Vlissides', 'One of the  ''Gang of four''.'); /*6*/
 insert into author (name) values ('Tad Williams'); /*7*/
 insert into author (name) values ('William Gibson'); /*8*/
 insert into author (name) values ('Neal Stephenson'); /*9*/
