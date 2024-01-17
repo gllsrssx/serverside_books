@@ -5,12 +5,27 @@ insert into BOOK (TITLE, DESCRIPTION) values ('1Q84', 'Set in 1984 in Tokyo, the
 insert into BOOK (TITLE, DESCRIPTION) values ('De opwindvogelkronieken', 'Novel about Toru, a bored young man living a basic life in Tokyo. When Toru’s daily routines are interrupted by increasingly odd and chaotic events, he must undergo a metaphysical journey that tests the limits of free will and corporeality. ');/*5*/
 insert into BOOK (TITLE) values ('Design Patterns');/*6*/
 
-insert into AUTHOR (NAME, DESCRIPTION) values ('Margaret Atwood', 'Margaret Atwood was born in 1939 in Ottawa and grew up in northern Ontario, Quebec, and Toronto. Throughout her writing career, Margaret Atwood has received numerous awards and honourary degrees.'); /*1*/
-insert into AUTHOR (NAME, DESCRIPTION) values ('Haruki Murakami', 'Haruki Murakami  is a popular contemporary Japanese writer and translator. His work has been described as ''easily accessible, yet profoundly complex''.'); /*2*/
-insert into AUTHOR (NAME, DESCRIPTION) values ('Erich Gamma', 'One of the ''Gang of four''.'); /*3*/
-insert into AUTHOR (NAME, DESCRIPTION) values ('Richard Helm', 'One of the  ''Gang of four''.'); /*4*/
-insert into AUTHOR (NAME, DESCRIPTION) values ('Ralph Johnson', 'One of the  ''Gang of four''.'); /*5*/
-insert into AUTHOR (NAME, DESCRIPTION) values ('John Vlissides', 'One of the  ''Gang of four''.'); /*6*/
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'Margaret Atwood',
+         'Margaret Atwood was born in 1939 in Ottawa and grew up in northern Ontario, Quebec, and Toronto. Throughout her writing career, Margaret Atwood has received numerous awards and honourary degrees.',
+         'Canada'); /*1*/
+
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'Haruki Murakami',
+         'Haruki Murakami  is a popular contemporary Japanese writer and translator. His work has been described as ''easily accessible, yet profoundly complex''.',
+         'Japan'); /*2*/
+
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'Erich Gamma', 'One of the ''Gang of four''.', 'Switzerland'); /*3*/
+
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'Richard Helm', 'One of the ''Gang of four''.', 'Australia'); /*4*/
+
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'Ralph Johnson', 'One of the ''Gang of four''.', 'USA'); /*5*/
+
+insert into author (NAME, DESCRIPTION, COUNTRY)
+values ( 'John Vlissides', 'One of the ''Gang of four''.', 'USA'); /*6*/
 
 insert into BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) values (1, 1);
 insert into BOOK_AUTHORS (BOOKS_ID, AUTHORS_ID) values (2, 1);
