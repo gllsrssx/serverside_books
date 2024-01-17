@@ -12,7 +12,7 @@ insert into book (title, author) values ('Neuromancer ', ''); /*11*/
 insert into book (title, author) values ('Snow crash', ''); /*12*/
 insert into book (title, author) values ('Rainbows’s end', ''); /*13*/
 insert into book (title, author) values ('Hard-boiled wonderland en het einde van de wereld', ''); /*14*/
-insert into book (title, author)values ('Ready Payer one', ''); /*15*/
+insert into book (title, author) values ('Ready Player one', ''); /*15*/
 insert into book (title, author) values ('Refactoring', ''); /*16*/
 insert into book (title, author) values ('Extreme Programming Explained', ''); /*17*/
 insert into book (title, author) values ('Implementation patterns', ''); /*18*/
@@ -55,4 +55,8 @@ insert into book_authors (books_id, authors_id) values (16, 11);
 insert into book_authors (books_id, authors_id) values (17, 12);
 insert into book_authors (books_id, authors_id) values (18, 12);
 insert into book_authors (books_id, authors_id) values (19, 13);
+
+
+insert into SERIE(NAME) values ('Oryx and Crake');
+insert into SERIE(NAME) values ('Anderland');
 
