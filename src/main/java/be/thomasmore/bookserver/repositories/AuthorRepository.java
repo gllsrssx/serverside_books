@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface AuthorRepository extends CrudRepository<Author, Integer> {
     @NonNull
     List<Author> findAll();
+
+    Optional<Author> findByNameIgnoreCase(String name);
 }

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1f1dd81c-dc03-4bf0-9360-18c179a96267",
+		"_postman_id": "a03a2e92-edc4-4a6b-8fee-08743031e9ab",
 		"name": "Books",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13494213"
@@ -448,6 +448,52 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "{{url}}/api/authors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const xsrfCookie = postman.getResponseCookie('XSRF-TOKEN');\r",
+							"console.log(xsrfCookie);\r",
+							"postman.setEnvironmentVariable('xsrf-token', xsrfCookie.value);   "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"name\":\"Anet Daanje\",\"description\": \" pseudoniem van Anjet den Boer, is een Nederlands schrijfster en scenariste\", \"country\": \"Netherlands\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{url}}/api/authors",
 					"host": [
