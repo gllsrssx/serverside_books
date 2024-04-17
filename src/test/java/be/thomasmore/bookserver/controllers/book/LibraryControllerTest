@@ -1,0 +1,52 @@
+package be.thomasmore.bookserver.controllers.book;
+
+import be.thomasmore.bookserver.AbstractIntegrationTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.web.servlet.MvcResult;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SuppressWarnings("SpringTestingSqlInspection")
+@Sql("/sql/books/create_libraries.sql")
+@Sql(scripts = "/sql/books/clean_libraries.sql", executionPhase = AFTER_TEST_METHOD)
+public class LibraryControllerTest extends AbstractIntegrationTest {
+
+    @Test
+    public void getLibrariesNoFilter() throws Exception {
+        // when
+        MvcResult result = mockMvc.perform(get("/libraries"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(5)))
+                .andReturn();
+
+        // then
+        assertThat(result.getResponse().getContentAsString()).isEqualTo(
+                "[{\"id\":1,\"name\":\"Centrale Bibliotheek Brussel\",\"city\":\"Brussel\"}," +
+                        "{\"id\":2,\"name\":\"Stedelijke Bibliotheek Antwerpen\",\"city\":\"Antwerpen\"}," +
+                        "{\"id\":3,\"name\":\"Gemeentelijke Bibliotheek Gent\",\"city\":\"Gent\"}," +
+                        "{\"id\":4,\"name\":\"Erfgoedbibliotheek Brugge\",\"city\":\"Brugge\"}," +
+                        "{\"id\":5,\"name\":\"Universiteitsbibliotheek Leuven\",\"city\":\"Leuven\"}]"
+        );
+    }
+
+    @Test
+    public void getLibrariesFilterCity() throws Exception {
+        // when
+        MvcResult result = mockMvc.perform(get("/libraries?city=bru"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andReturn();
+
+        // then
+        assertThat(result.getResponse().getContentAsString()).isEqualTo(
+                "[{\"id\":1,\"name\":\"Centrale Bibliotheek Brussel\",\"city\":\"Brussel\"}," +
+                        "{\"id\":4,\"name\":\"Erfgoedbibliotheek Brugge\",\"city\":\"Brugge\"}]"
+        );
+    }
+
+}
